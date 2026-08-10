@@ -1,0 +1,234 @@
+[
+  {
+    "version": "1.5.6",
+    "changes": [
+      "Fixed: dashboard AR/AP outstanding balances and overdue totals could overstate what's owed -- overpayments on a normal invoice were silently excluded from the total instead of reducing it, while an equivalent credit memo was handled correctly. Now netted consistently either way, matching a real EBMS AR Aging report exactly.",
+      "Fixed: the background service that powers AI chat answers will now automatically restart if it ever crashes, instead of silently staying down until manually restarted."
+    ]
+  },
+  {
+    "version": "1.5.4",
+    "changes": [
+      "Added a Settings option to the account menu, where you can now choose to hide the SQL shown under chat answers. The theme (light/dark) toggle has also moved here from its own header button."
+    ]
+  },
+  {
+    "version": "1.5.3",
+    "changes": [
+      "Query results are now shown as a scrollable table instead of typed out row-by-row, and the row limit has been raised from 200 to 1000",
+      "When a result is too large to show in full, the total count and total are now always accurate -- previously they could be silently based on only the visible rows instead of the full result",
+      "Fixed: some general ledger questions were reading an empty pending-transactions table instead of the posted ledger, which could show no activity for accounts that actually had activity",
+      "Fixed: dates stored as text in older ledger tables (including EBMS's year-end adjustment entries) no longer cause the query to fail",
+      "Fixed: questions about a specific date or period (\"this month,\" \"last week,\" a bare date) now resolve against today's actual date instead of an example date",
+      "Fixed: sales and revenue totals for a period are now always calculated directly in the database, never estimated from a partial list of rows",
+      "Fixed: excluding a customer or vendor by name no longer accidentally excludes every company-type account that has no first name on file",
+      "Fixed: a fuzzy-match filter (like a warehouse name) combined with a date or status filter now groups correctly, so the date/status filter can no longer be silently dropped",
+      "Fixed: item-level revenue questions no longer double-count when joined against invoice header totals",
+      "Performance: query costs reduced by caching the AI's system instructions instead of resending them in full on every question"
+    ]
+  },
+  {
+    "version": "1.5.2",
+    "changes": [
+      "Fixed login failing after a password reset on newer EBMS versions -- some EBMS builds store the password differently than older versions, and login now recognizes both",
+      "Auto-update now recognizes and repairs its own tunnel service if it was previously renamed or disabled by a conflict with another Cloudflare Tunnel-based product"
+    ]
+  },
+  {
+    "version": "1.5.1",
+    "changes": [
+      "Fixed a conflict on servers that also run other Cloudflare Tunnel-based software (e.g. Koble) -- installing or updating IntraMind could previously disable the other product's connection, and vice versa",
+      "Fixed an installation failure on servers with a newer version of Python already present",
+      "Fixed a missing dependency that could cause the installer to fail partway through on a fresh server"
+    ]
+  },
+  {
+    "version": "1.4.9",
+    "changes": [
+      "Vendor payment questions now correctly query vendor bills instead of customer invoices",
+      "Fixed: payments applied to a specific invoice were returning zero results due to a wrong join key between payment tables",
+      "Fixed: \"bills due this week\" and similar queries now correctly handle bills with no payment terms set in EBMS",
+      "Fixed: early payment discount queries now use the discount deadline, not the final payment due date",
+      "Fixed: payroll averages and counts now correctly include only finalized paychecks, not in-progress or voided entries",
+      "\"Last pay period\" queries now use the actual pay period from EBMS instead of an approximate date range",
+      "Fixed: job name lookups (e.g. \"hours on the Riverside job\") now resolve correctly through the job code",
+      "Fixed: questions asking for a count or breakdown by category now use grouped totals instead of a row list that could be truncated",
+      "Fixed: \"slowest payers\" and similar date-difference queries no longer error on the days calculation",
+      "Deleted/merged customer records no longer appear in customer lists and lookups",
+      "Business questions phrased in industry language (menu items, collections, payroll spend, gross margin) are now always answered directly"
+    ]
+  },
+  {
+    "version": "1.4.8",
+    "changes": [
+      "Ghost invoice lines from deleted EBMS records no longer appear in queries or KPI totals -- IntraMind now correctly ignores records that were deleted in EBMS but carried over by the database sync",
+      "Fixed employee hours and payroll queries where filtering by a person's name plus a date range could return results for all employees with a matching first name, ignoring the date"
+    ]
+  },
+  {
+    "version": "1.4.7",
+    "changes": []
+  },
+  {
+    "version": "1.4.6",
+    "changes": [
+      "Item lookups by ID are now more reliable -- trailing spaces and case differences in EBMS item codes no longer cause misses",
+      "IntraMind no longer asks you to run a query yourself -- all queries run automatically and results are shown directly",
+      "All KPI dashboard cards now show a matching breakdown when clicked -- the drill-through number will always match the card",
+      "Payments received: drill-through now correctly excludes voided payments and refund rows, matching the KPI",
+      "Bills due this week: drill-through now shows only bills due within the next 7 days, not all open AP",
+      "Payroll: the KPI and drill-through now correctly exclude expense reimbursements, matching EBMS's own payroll report",
+      "Sales: drill-through now uses the same posted-invoice filter (statuses O and X) as the KPI card"
+    ]
+  },
+  {
+    "version": "1.4.5",
+    "changes": [
+      "Major accuracy pass on how answers are calculated -- a broad review corrected dozens of underlying data rules",
+      "Gross margin is now honest about cost data: if cost isn't recorded on most of your sales, IntraMind tells you that instead of reporting an inflated number, and explains when there are simply no tracked-item sales to measure",
+      "More reliable customer and vendor balances -- credit memos and overpayments are handled consistently, and voided payments no longer count as money received",
+      "Active/inactive filtering, payroll pay rates, job status, and quote status now match what you see in EBMS",
+      "Folder and product-line filtering is more precise (no more accidental matches from unrelated folders)",
+      "More reliable background updates"
+    ]
+  },
+  {
+    "version": "1.4.1",
+    "changes": [
+      "Clearer message when a margin question has no inventoried-product sales to measure -- now explains there are no tracked-item sales in the period instead of incorrectly saying there are no invoices"
+    ]
+  },
+  {
+    "version": "1.4.0",
+    "changes": [
+      "Major accuracy pass on how answers are calculated -- a broad review corrected dozens of underlying data rules",
+      "Gross margin is now honest about cost data: if cost isn't recorded on most of your sales, IntraMind tells you that instead of reporting an inflated number",
+      "More reliable customer and vendor balances -- credit memos and overpayments are handled consistently, and voided payments no longer count as money received",
+      "Active/inactive filtering, payroll pay rates, job status, and quote status now match what you see in EBMS",
+      "Folder and product-line filtering is more precise (no more accidental matches from unrelated folders)"
+    ]
+  },
+  {
+    "version": "1.3.9",
+    "changes": [
+      "Smarter answers to business questions like gross margin, most and least profitable products, and spending trends -- consistent calculations every time",
+      "Analytical answers now state how the number was calculated so you can check it against your own books",
+      "Honest about its limits -- questions it can't truly answer (like predicting churn) now point you to the closest real signal instead of guessing",
+      "Flags impossible results (like a margin over 100%) as likely data issues rather than reporting them as fact"
+    ]
+  },
+  {
+    "version": "1.3.8",
+    "changes": [
+      "Rate any answer with thumbs up or down -- tell us when a query gets something wrong",
+      "Failed queries are now reported automatically so we can fix them faster"
+    ]
+  },
+  {
+    "version": "1.3.7",
+    "changes": [
+      "Account menu button now shows a dropdown arrow so it's clearly clickable"
+    ]
+  },
+  {
+    "version": "1.3.6",
+    "changes": [
+      "Cleaner header -- live status, read-only note, and last-updated time consolidated into one chip",
+      "New account menu -- What's New, all updates, help and contact, and sign out in one place",
+      "What's New can now be reopened anytime from the account menu",
+      "Version number now links to the full update history"
+    ]
+  },
+  {
+    "version": "1.3.5",
+    "changes": [
+      "What's New dialog updated with correct brand colour and link to full update history at intramind.ca/updates"
+    ]
+  },
+  {
+    "version": "1.3.4",
+    "changes": [
+      "Fixed What's New not appearing on beta channel installs"
+    ]
+  },
+  {
+    "version": "1.3.3",
+    "changes": [
+      "Fixed folder queries returning 0 results -- items in named folders now correctly matched",
+      "Fixed What's New notification only showing for the first user to log in after an update"
+    ]
+  },
+  {
+    "version": "1.3.2",
+    "changes": [
+      "Fixed query errors on installs where multi-currency columns are not present"
+    ]
+  },
+  {
+    "version": "1.3.1",
+    "changes": [
+      "Fixed incorrect month resolution on follow-up queries",
+      "Fixed Days to Payment tile drill-down failing",
+      "Natural language folder queries now work (e.g. \"items in my Parts folder\")",
+      "Multi-currency awareness -- CAD and USD amounts no longer mixed in totals",
+      "Improved follow-up question context across the session"
+    ]
+  },
+  {
+    "version": "1.3.0",
+    "changes": [
+      "Automatic updates no longer require a GitHub token -- updates are now fully self-managing",
+      "SHA256 checksum verification on every update for integrity",
+      "What's New notifications now delivered with every update automatically"
+    ]
+  },
+  {
+    "version": "1.2.5",
+    "changes": [
+      "Cloudflare tunnel now automatically starts if stopped after an update",
+      "Cloudflared service configured with failure recovery \u2014 restarts automatically if it fails on boot"
+    ]
+  },
+  {
+    "version": "1.2.4",
+    "changes": [
+      "Log noise suppression: /health, /stats, and /logs polling no longer appears in agent.log",
+      "Portal token system: usage stats and log viewer now secured per-customer"
+    ]
+  },
+  {
+    "version": "1.2.3",
+    "changes": [
+      "Remote log viewer: admin portal can now pull server logs without RDP access"
+    ]
+  },
+  {
+    "version": "1.2.2",
+    "changes": [
+      "Usage tracking: queries today, this week, and active users visible in the admin portal"
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "changes": [
+      "Multi-company support: switch between EBMS datasets at login (when multiple are configured)",
+      "Company name in header reflects the active dataset"
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "changes": [
+      "Login now uses your EBMS username and password directly",
+      "Per-user permissions enforced based on your EBMS module access",
+      "Weak password warning shown after login if password doesn't meet security requirements"
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "changes": [
+      "Initial release",
+      "Natural language queries against your EBMS database",
+      "AR, AP, inventory, payroll, job costing modules supported"
+    ]
+  }
+]
