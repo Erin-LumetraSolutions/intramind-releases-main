@@ -1,6 +1,6 @@
 {
-  "version": "1.5.6-main.c34ec5a",
+  "version": "1.5.6-main.3dd55d4",
   "zip_url": "https://raw.githubusercontent.com/Erin-LumetraSolutions/intramind-releases-main/main/intramind-release.zip",
-  "sha256": "63e7d14f05f3c8bed6cb0cb77c83b6a07f21057d168c8bcc00ed911d3d228df0",
+  "sha256": "a7303536b462d5b772b428387281ea934180a2e5d310c723685fb96b17f44c9b",
   "whats_new": "- Fixed: dashboard AR/AP outstanding balances and overdue totals could overstate what's owed -- overpayments on a normal invoice were silently excluded from the total instead of reducing it, while an equivalent credit memo was handled correctly. Now netted consistently either way, matching a real EBMS AR Aging report exactly.\n- Fixed: the background service that powers AI chat answers will now automatically restart if it ever crashes, instead of silently staying down until manually restarted."
 }
