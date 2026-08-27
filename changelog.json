@@ -1,5 +1,35 @@
 [
   {
+    "version": "1.5.9",
+    "changes": [
+      "Added: you can now paste an existing FoxPro/report query and ask IntraMind to translate it into a question it can answer.",
+      "Fixed: total-sales style questions could give a different total depending on how the question was phrased, from two calculations that weren't always consistent with each other.",
+      "Fixed: a name search like \"vendors named Smith and Jones\" now correctly matches either name, instead of requiring both to appear together.",
+      "Fixed: folder/category filtering questions could occasionally match extra unrelated records due to a trailing-space mismatch.",
+      "Fixed: warehouse questions now consistently use the correct warehouse code instead of occasionally mixing up code and name.",
+      "Fixed: a follow-up \"how does that compare to last year\" question could silently reuse the wrong date range from an earlier question.",
+      "Fixed: a question about negative on-hand inventory could produce a fabricated explanation instead of just reporting the numbers.",
+      "Fixed: a P&L (profit & loss) question could report a mathematically inverted (sign-flipped) result in some phrasings.",
+      "Fixed: an AP (vendor bill) line-item amount question could double-count in some cases due to a join key mismatch.",
+      "Fixed: a per-invoice payment total could silently include allocations from a voided receipt.",
+      "Fixed: several general-ledger and year-over-year questions that previously returned no answer, or an inconsistent one, now resolve correctly.",
+      "Fixed: some questions that IntraMind could actually answer were being incorrectly refused.",
+      "Fixed: a rare SQL error on some multi-part financial summary questions (e.g. a full P&L in one answer).",
+      "Fixed: dashboard KPI drill-down could occasionally show a total that didn't match its own detail list.",
+      "Fixed: dashboard KPI drill-down no longer crashes on an unexpected server response.",
+      "Fixed: a stored-XSS issue in the KPI drill-down detail view.",
+      "Fixed: the \"What's New\" popup could stretch to fill the whole screen on a long changelog.",
+      "Fixed: \"New Chat\" could silently do nothing, and the starting suggestions could disappear permanently after your first message.",
+      "Fixed: logging out no longer leaves the previous session's dashboard/chat data briefly visible to the next login.",
+      "Fixed: a stale error or answer from a previous chat could occasionally appear after starting a new one.",
+      "Fixed: submitting feedback always showed \"Thanks,\" even when it silently failed to send.",
+      "Fixed: several places where a slow or dropped network request could leave a button stuck disabled with no explanation, or hang indefinitely with no timeout.",
+      "Security: query rate-limiting is now based on your real originating IP instead of a value that could be spoofed.",
+      "Security: dashboard/report access now consistently enforces your module permissions everywhere, closing a couple of narrow gaps where a permission check could be skipped or accidentally treated as \"allow\" by default.",
+      "Security: hardened the SQL safety filter against a couple of narrow ways a disallowed statement type could have slipped through."
+    ]
+  },
+  {
     "version": "1.5.6",
     "changes": [
       "Fixed: dashboard AR/AP outstanding balances and overdue totals could overstate what's owed -- overpayments on a normal invoice were silently excluded from the total instead of reducing it, while an equivalent credit memo was handled correctly. Now netted consistently either way, matching a real EBMS AR Aging report exactly.",
