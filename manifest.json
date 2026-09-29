@@ -1,6 +1,6 @@
 {
-  "version": "1.6.2-main.9ca65fc",
+  "version": "1.6.2-main.395e7f4",
   "zip_url": "https://raw.githubusercontent.com/Erin-LumetraSolutions/intramind-releases-main/main/intramind-release.zip",
-  "sha256": "5273b6c0b7aa74ad564d88ea3115ff7a48d4fcf6cd6e7250d3f154852609b2a4",
+  "sha256": "b360c4d8d3e140de5ca7bec0ac3c073d91275e57e1749afc08505083618350c5",
   "whats_new": "- Added: rental status, serial numbers, and added-cost-batch totals for serialized inventory items are now answerable directly, instead of the assistant refusing or guessing at an answer.\n- Fixed: a question about rental income (or a similar revenue category) for a specific month no longer gets a generic \"I can't answer that\" refusal.\n- Fixed: a question about a custom tab or field a customer added to EBMS now gets an honest, specific answer instead of a generic refusal.\n- Fixed: a \"where do I find X\" navigation-style question is no longer refused outright when a real, related answer is available instead.\n- Fixed: a margin/profit report's unclassified-revenue coverage check could understate a real gap when offsetting positive and negative unclassified amounts canceled out, or when net revenue was negative for the scope being reported on; it is now sign-robust in both cases.\n- Fixed: that same coverage check could read as \"no gap\" for a scope with no unclassified activity at all, instead of a clean zero; and the report can now explain what a share above 100%, or an undefined result from exactly $0 net revenue, actually means."
 }
