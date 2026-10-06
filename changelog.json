@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.6.3",
+    "changes": [
+      "Fixed: generated queries can no longer read the database's own system tables (table lists, server settings, other sessions' activity), and several other query-safety checks were tightened.",
+      "Fixed: sales totals that combine invoice headers with their line items are checked in more query shapes, so a total is no longer counted more than once; a retry fixes the query before it is shown.",
+      "Fixed: \"sales by customer and product\" style questions that ask for a running total beside grouped rows no longer fail with a database error.",
+      "Fixed: onboarding and install now catch a damaged or split API key line, show clear guidance when a service fails to start, and handle company names with special characters correctly.",
+      "Fixed: the portal could silently drop a customer's down-vote when the task tracker was briefly unavailable, and could show a failed channel switch as an error after it had actually succeeded; both now behave correctly, and customer usage counts are shown safely.",
+      "Fixed: the feedback watcher no longer files duplicate tickets when it cannot save its state, handles malformed entries without stopping, and cannot run twice at once.",
+      "Fixed: automatic updates now install a release's changed Python packages (downloaded before the service stops), restore the previous packages on a rollback, wait longer for the service to come back, skip a release that failed for 24 hours (the portal's \"Update Now\" still retries immediately), and keep the update schedule's staggered start time.",
+      "Fixed: a security gap where the updater's package installer could read a configuration file that any local user could create; it now ignores such files."
+    ]
+  },
+  {
     "version": "1.6.2",
     "changes": [
       "Added: rental status, serial numbers, and added-cost-batch totals for serialized inventory items are now answerable directly, instead of the assistant refusing or guessing at an answer.",
