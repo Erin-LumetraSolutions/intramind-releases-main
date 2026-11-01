@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.7.1",
+    "changes": [
+      "New: IntraMind Assist. Draft and save purchase orders, sales orders, vendor bills (from a dropped PDF or photo), and new customers, vendors and parts into EBMS, entered as the signed-in EBMS user and only where writes are turned on. Review lists, search pickers, line editing, bill-to-PO matching and Open in EBMS links are included. Part import adds or updates parts in bulk.",
+      "New: a redesigned layout with a dashboard on the left and the assistant on the right, role-based views (Owner, Purchaser, Sales) and pinned answers.",
+      "New: user settings that follow the user, and company settings for EBMS Administrators.",
+      "Changed: the tiers are now called IntraMind Insight and IntraMind Assist, and every user signs in with a named EBMS user.",
+      "Changed: you must accept the Terms again after this update.",
+      "Fixed: order totals use the unprocessed-order total, and a list of open sales-order lines totals each line correctly; other sales totals are unchanged.",
+      "Fixed: users without access no longer see the Dashboard view control, and signing out clears Settings."
+    ]
+  },
+  {
     "version": "1.6.3",
     "changes": [
       "Fixed: generated queries can no longer read the database's own system tables (table lists, server settings, other sessions' activity), and several other query-safety checks were tightened.",
