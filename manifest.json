@@ -1,6 +1,6 @@
 {
-  "version": "1.7.1-main.358758a",
+  "version": "1.7.1-main.13f890c",
   "zip_url": "https://raw.githubusercontent.com/Erin-LumetraSolutions/intramind-releases-main/main/intramind-release.zip",
-  "sha256": "c1247f2c906ca61f88fa6f4f85fe310ffa46635adae884610153ba3f376de564",
+  "sha256": "69467386b4ad1d3950336c6fe8061cd0ed8e9243fb471b2842ec615a1406f0b5",
   "whats_new": "- New: IntraMind Assist. Draft and save purchase orders, sales orders, vendor bills (from a dropped PDF or photo), and new customers, vendors and parts into EBMS, entered as the signed-in EBMS user and only where writes are turned on. Review lists, search pickers, line editing, bill-to-PO matching and Open in EBMS links are included. Part import adds or updates parts in bulk.\n- New: a redesigned layout with a dashboard on the left and the assistant on the right, role-based views (Owner, Purchaser, Sales) and pinned answers.\n- New: user settings that follow the user, and company settings for EBMS Administrators.\n- Changed: the tiers are now called IntraMind Insight and IntraMind Assist, and every user signs in with a named EBMS user.\n- Changed: you must accept the Terms again after this update.\n- Fixed: order totals use the unprocessed-order total, and a list of open sales-order lines totals each line correctly; other sales totals are unchanged.\n- Fixed: users without access no longer see the Dashboard view control, and signing out clears Settings."
 }
