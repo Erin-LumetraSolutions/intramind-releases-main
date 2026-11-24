@@ -1,5 +1,13 @@
 [
   {
+    "version": "1.7.3",
+    "changes": [
+      "Fixed: a bill saved on a purchase order is now checked against the PO as EBMS has it at that moment, so a line added or changed in EBMS since IntraMind's copy was updated is no longer added a second time. When the PO changed in EBMS after the draft was shown (or it is no longer the PO the draft was matched to), the save is refused and the draft shows the PO as it is now. If EBMS can't be read when the draft is opened, the card says so and saving checks EBMS again.",
+      "Fixed: saving a bill on a purchase order never lowers what EBMS shows as received. A bill for less than the PO has already received is blocked (enter it on the PO in EBMS), a bill for more says how much more it receives, and Undo refuses when EBMS has received something on the PO since the bill was saved. For bills saved from this version on, Undo removes only the lines the bill added, and refuses when other lines were added to the PO since.",
+      "Changed: a bill's purchase order options show the back-order suffix (PO 210504/1), up to 20 open POs that share parts with the bill are considered, and after saving the card warns when EBMS didn't take every change on the PO."
+    ]
+  },
+  {
     "version": "1.7.2",
     "changes": [
       "New: Assist cleans up its own data every day. Uploaded bills and orders are kept at most 30 days, drafts are removed 90 days after their last change, and the write history (audit log) is removed after one year. The cleanup holds back if the server clock looks wrong or if more than half of a table would go at once, and it never touches EBMS. The \"Keep dropped documents\" company setting now offers 7, 14 or 30 days.",
